@@ -2,7 +2,7 @@ export interface ScheduleItem {
     id: string;
     name: string;
     location: string;
-    date: Date;
+    date: string;
     duration?: string;
     description?: string;
     dayOfTrip?: string;

@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { ILink, guestLinks } from 'src/app/commons/menu-links';
+import { ILink, guestLinks, registeredLinks} from 'src/app/commons/menu-links';
 
 @Component({
   selector: 'app-menu',
@@ -8,7 +8,7 @@ import { ILink, guestLinks } from 'src/app/commons/menu-links';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit, OnDestroy {
-  links: ILink[] = guestLinks;
+  links: ILink[] = registeredLinks;
 
   constructor(
     private router: Router,
@@ -19,6 +19,7 @@ export class MenuComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() { }
+
 
   private setLinks() {
     //   switch (this.userRole) {
@@ -32,6 +33,6 @@ export class MenuComponent implements OnInit, OnDestroy {
     //       this.links = guestLinks;
     //   }
     // }
-    this.links = guestLinks
+    this.links = registeredLinks
   }
 }

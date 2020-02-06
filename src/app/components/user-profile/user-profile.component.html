@@ -1,0 +1,19 @@
+<mat-card>
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit(userForm.value)">
+        <div>
+        <mat-form-field>
+        <input matInput id="username" type="text" formControlName="username" value="{{currentUser.username}}">
+        </mat-form-field>
+    </div>
+        <div>
+            <mat-form-field>
+            <input matInput id="firstname" type="text" formControlName="firstName" value="{{currentUser.firstName}}">
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+            <input matInput id="lastname" type="text" formControlName="lastName" value="{{currentUser.lastName}}">
+        </mat-form-field>
+        </div>
+    </form>
+</mat-card>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -29,21 +30,22 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  // onSubmit(formValue: any) {
-  //   const { username, password } = formValue;
+  onSubmit(formValue: any) {
+    const { username, password } = formValue;
 
-  //   this.authService.login({
-  //     username,
-  //     password,
-  //   }).subscribe(
-  //     (res) => {
-  //       localStorage.setItem('token', res.token);
-  //       this.authService.updateUserRole();
-  //       this.router.navigate(['/']);
-
-  //       return true;
-  //     },
-  //     (err: HttpErrorResponse) => {
-  //     });
-  // }
+    this.authService.login({
+      username,
+      password,
+    }).subscribe(
+      (res) => {
+        localStorage.setItem('token', res.token);
+        console.log(this.authService.getUserId());
+        this.router.navigate(['/']);
+        return true;
+      },
+      (err: HttpErrorResponse) => {
+        console.log('Something went wrong!!!!');
+        console.log(err);
+      });
+  }
 }

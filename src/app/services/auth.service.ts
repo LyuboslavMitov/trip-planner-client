@@ -23,8 +23,7 @@ export class AuthService {
   }
 
   public login(user: any): Observable<any> {
-    return null;
-      // return this.http.get<any>(`http://localhost:8080/api/authenticate?username=${user.username}&password=${user.password}`, user);
+      return this.http.get<any>(`http://localhost:8080/api/authenticate?username=${user.username}&password=${user.password}`, user);
   }
 
   public logout(): void {
@@ -44,6 +43,10 @@ export class AuthService {
       return this.getDecodedToken().id;
   }
 
+  public getToken(): string {
+      return localStorage.getItem('token')
+  }
+
   private getDecodedToken() {
       const token: string = localStorage.getItem('token');
 
@@ -52,4 +55,5 @@ export class AuthService {
       }
       return (jwt_decode(token) as any);
   }
+  
 }

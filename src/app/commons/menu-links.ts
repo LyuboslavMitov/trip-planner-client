@@ -15,4 +15,23 @@ export const guestLinks: ILink[] = [
     //     class: 'nav-item nav-link',
     //     routerLink: '/login'
     // }
+
+];
+
+export const registeredLinks: ILink[] = [
+    {
+        name: 'Home',
+        class: 'nav-item nav-link',
+        routerLink: ''
+    },
+    {
+        name: 'user',
+        class: 'nav-item nav-link',
+        routerLink: '/user'
+    },
+    // {
+    //     name: 'Login',
+    //     class: 'nav-item nav-link',
+    //     routerLink: '/login'
+    // }
 ];
