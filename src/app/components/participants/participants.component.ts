@@ -10,9 +10,8 @@ import { User } from 'src/app/models/User';
 export class ParticipantsComponent implements OnInit {
   @Input('participants') participants: User[];
 
-  constructor(private tripService:TripsService) { }
+  constructor() { }
 
   ngOnInit() {
-      console.log(this.participants)
   }
 }

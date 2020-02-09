@@ -5,12 +5,14 @@
 <h5>Duration: {{trip?.startDate | date}} - {{trip?.endDate | date}}</h5>
 </div>
 
-<mat-tab-group #tabGroup mat-align-tabs="start" (selectedTabChange) = "tabChange($event)">
+<mat-tab-group id="trip-tab-group" #tabGroup mat-align-tabs="start" (selectedTabChange) = "tabChange($event)">
     <!-- maybe query everything in this component and imput it to new components for participants schedule and expenses here.. like: 
     <mat-tab label="Participants"><app-schedule></app-participants></mat-tab> -->
     <mat-tab label="Participants">
         <app-participants [participants]="participants"></app-participants>
     </mat-tab>
-    <mat-tab label="Schedule">Content 2</mat-tab>
+    <mat-tab label="Schedule">
+        <app-schedule [scheduleItems]="scheduleItems"></app-schedule>
+    </mat-tab>
     <mat-tab label="Expense">Content 3</mat-tab>
 </mat-tab-group>

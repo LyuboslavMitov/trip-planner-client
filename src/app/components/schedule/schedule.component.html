@@ -1,0 +1,18 @@
+<mat-accordion>
+
+    <mat-expansion-panel *ngFor="let item of scheduleItems" (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                {{item?.name}}
+            </mat-panel-title>
+            <mat-panel-description>
+                {{item?.date | date}}
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <h6>Where: {{item?.location}}</h6>
+        <section *ngIf="item.duration">Duration: {{item.druation}} hrs.</section>
+        <section>{{item?.description}}</section>
+        <!--TODO: add actions -->
+    </mat-expansion-panel>
+</mat-accordion>
