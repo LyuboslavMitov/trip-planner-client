@@ -1,1 +1,16 @@
-<p>trip works!</p>
+<div class="container">
+<h1>{{trip?.name}}</h1>
+<p>{{trip?.description}}</p>
+<h5>Destination: {{trip?.destination}}</h5>
+<h5>Duration: {{trip?.startDate | date}} - {{trip?.endDate | date}}</h5>
+</div>
+
+<mat-tab-group mat-align-tabs="start">
+    <!-- maybe query everything in this component and imput it to new components for participants schedule and expenses here.. like: 
+    <mat-tab label="Participants"><app-schedule></app-participants></mat-tab> -->
+    <mat-tab label="Participants">
+        <app-participants tripId={{this.tripId}}></app-participants>
+    </mat-tab>
+    <mat-tab label="Schedule">Content 2</mat-tab>
+    <mat-tab label="Expense">Content 3</mat-tab>
+</mat-tab-group>

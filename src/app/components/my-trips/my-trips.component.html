@@ -2,5 +2,5 @@
 <mat-card-title>{{trip.name}}</mat-card-title>
 <mat-card-subtitle>Destination: {{trip.destination}}</mat-card-subtitle>
 <mat-card-subtitle>Date: {{trip.startDate | date}} - {{trip.endDate | date}}</mat-card-subtitle>
-<mat-card-content *ngIf="trip.description">{{trip.description}}</mat-card-content>
+<mat-card-content>{{trip?.description}}</mat-card-content>
 </mat-card>

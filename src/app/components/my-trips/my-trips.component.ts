@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class MyTripsComponent implements OnInit {
 
   private trips: Trip[];
+
   constructor(private tripService: TripsService, private router: Router) { }
 
   ngOnInit() {

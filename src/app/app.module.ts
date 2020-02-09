@@ -6,13 +6,14 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MenuComponent } from './components/menu/menu.component';
 import { LoginComponent } from './components/login/login.component';
-import {MatButtonModule, MatFormFieldModule, MatInputModule, MatCardModule, MatTableModule, MatSidenavModule, MatSelectModule, MatListModule, MatIconModule} from '@angular/material'
+import {MatButtonModule, MatFormFieldModule, MatInputModule, MatCardModule, MatTableModule, MatSidenavModule, MatSelectModule, MatListModule, MatIconModule, MatTabsModule} from '@angular/material'
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './commons/http-interceptor';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { MyTripsComponent } from './components/my-trips/my-trips.component';
 import { TripComponent } from './components/trip/trip.component';
+import { ParticipantsComponent } from './components/participants/participants.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { TripComponent } from './components/trip/trip.component';
     LoginComponent,
     UserProfileComponent,
     MyTripsComponent,
-    TripComponent
+    TripComponent,
+    ParticipantsComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +41,8 @@ import { TripComponent } from './components/trip/trip.component';
     MatSidenavModule,
     MatCardModule,
     MatTableModule,
-    MatInputModule
+    MatInputModule,
+    MatTabsModule
   ],
   providers: [
     {
