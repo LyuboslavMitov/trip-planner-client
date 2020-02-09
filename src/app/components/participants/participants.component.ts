@@ -8,16 +8,11 @@ import { User } from 'src/app/models/User';
   styleUrls: ['./participants.component.css']
 })
 export class ParticipantsComponent implements OnInit {
-  private participants:User[];
-  @Input('tripId') tripId: string;
+  @Input('participants') participants: User[];
 
   constructor(private tripService:TripsService) { }
 
   ngOnInit() {
-    this.tripService.getTripParticipants(this.tripId).subscribe(users=>{
-      this.participants=users
       console.log(this.participants)
-    });
   }
-
 }
