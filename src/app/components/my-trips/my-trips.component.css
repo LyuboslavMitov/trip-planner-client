@@ -1,0 +1,5 @@
+.trip-card {
+    max-width: 400px;
+    background-image: linear-gradient(to right, #D3CCE3,#D3CCE3);
+    cursor: pointer;
+}
