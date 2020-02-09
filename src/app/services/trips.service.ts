@@ -13,4 +13,8 @@ export class TripsService {
   public getMyTrips() : Observable<Trip[]>{
     return this.http.get<Trip[]>(`http://localhost:8080/api/trips`);
   }
+
+  public getTripById(tripId:string) : Observable<Trip>{
+    return this.http.get<Trip>(`http://localhost:8080/api/trips/${tripId}`);
+  }
 }

@@ -3,11 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { MyTripsComponent } from './components/my-trips/my-trips.component';
+import { TripComponent } from './components/trip/trip.component';
 
 
 const routes: Routes = [
   {path:'login', component:LoginComponent},
   {path:'user',component:UserProfileComponent},
+  {path: 'myTrips/:id', component: TripComponent},
   {path:'myTrips',component:MyTripsComponent}
 ];
 

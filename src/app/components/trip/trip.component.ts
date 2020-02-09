@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TripsService } from 'src/app/services/trips.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-trip',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TripComponent implements OnInit {
 
-  constructor() { }
+  private tripId:string;
+
+  constructor(private tripService:TripsService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    this.tripId=this.activatedRoute.snapshot.paramMap.get('id');
   }
-
+  
 }
