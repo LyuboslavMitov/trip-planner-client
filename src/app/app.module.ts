@@ -11,13 +11,17 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './commons/http-interceptor';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { MyTripsComponent } from './components/my-trips/my-trips.component';
+import { TripComponent } from './components/trip/trip.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
     LoginComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    MyTripsComponent,
+    TripComponent
   ],
   imports: [
     BrowserModule,

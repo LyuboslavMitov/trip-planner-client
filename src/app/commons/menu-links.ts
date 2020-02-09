@@ -25,9 +25,14 @@ export const registeredLinks: ILink[] = [
         routerLink: ''
     },
     {
-        name: 'user',
+        name: 'Profile',
         class: 'nav-item nav-link',
         routerLink: '/user'
+    },
+    {
+        name: 'Trips',
+        class: 'nav-item nav-link',
+        routerLink: '/myTrips'
     },
     // {
     //     name: 'Login',
