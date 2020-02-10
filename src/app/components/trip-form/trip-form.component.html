@@ -1,5 +1,4 @@
-<div class="dialog" mat-dialog-content>
-<form [formGroup]="tripForm" (ngSubmit)="onSubmit(tripForm.value)">
+<div [formGroup]="tripForm" (ngSubmit)="onSubmit(tripForm.value)" class="dialog" mat-dialog-content>
     <mat-form-field class="form-field" appearance="outline">
       <input matInput placeholder="Trip name" formControlName="name">
     </mat-form-field>
@@ -34,11 +33,8 @@
     </mat-form-field>
     <div mat-dialog-actions>
     <button class="btn btn-dark action" mat-button (click)="onNoClick()">No Thanks</button>
-    <input mat-button [mat-dialog-close]="data.trip" cdkFocusInitial  id="save-button" class="btn btn-dark action" type="submit" value="Save">
+    <button mat-button cdkFocusInitial [mat-dialog-close]="tripForm.value" id="save-button" class="btn btn-dark action" (click)="onSubmit(tripForm.value)">Save</button>
     </div>
-    
-    
-  </form>
 </div>
   
   

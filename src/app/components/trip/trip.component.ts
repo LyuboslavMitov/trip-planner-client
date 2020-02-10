@@ -73,7 +73,6 @@ export class TripComponent implements OnInit, AfterViewInit {
 
 
   openDialog(action: string): void {
-    if (action === 'Edit') { }
     const dialogRef = this.tripDialog.open(TripFormComponent, {
       data: { trip: this.trip, participants: this.participants }
     });

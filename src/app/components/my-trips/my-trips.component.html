@@ -4,3 +4,8 @@
 <mat-card-subtitle>Date: {{trip.startDate | date}} - {{trip.endDate | date}}</mat-card-subtitle>
 <mat-card-content>{{trip?.description}}</mat-card-content>
 </mat-card>
+
+
+<mat-card class="create-card hovernow-create" (click)="openCreateTripDialog()">
+    <mat-card-title>Create new Trip</mat-card-title>
+</mat-card>
