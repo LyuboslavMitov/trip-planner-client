@@ -1,0 +1,49 @@
+<div class="dialog" mat-dialog-content>
+<form [formGroup]="tripForm" (ngSubmit)="onSubmit(tripForm.value)">
+    <mat-form-field class="form-field" appearance="outline">
+      <input matInput placeholder="Trip name" formControlName="name">
+    </mat-form-field>
+    <mat-form-field class="form-field">
+      <input matInput placeholder="Destination" formControlName="destination">
+    </mat-form-field>
+    
+    <mat-form-field  class="form-field" appearance="outline">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description"></textarea>
+    </mat-form-field>
+    
+    
+    <!-- YOU HAVE TO WATCH FOR CHANGES IN THESE TO UPDATE THE MIN AND MAX OF THE DATE PICKER -->
+    <mat-form-field class="form-field">
+        <input matInput formControlName="startDate" [matDatepicker]="startDate">
+        <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+        <mat-datepicker  #startDate></mat-datepicker>
+    </mat-form-field>
+    
+    
+    <mat-form-field class="form-field">
+        <input matInput formControlName="endDate" [matDatepicker]="endDate">
+        <mat-datepicker #endDate></mat-datepicker>
+    </mat-form-field>
+    
+    <mat-form-field class="form-field" appearance="outline">
+        <mat-label>Participants</mat-label>
+        <mat-select formControlName="participants" multiple>
+          <mat-option *ngFor="let user of participants" value="user">{{user?.username}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <div mat-dialog-actions>
+    <button class="btn btn-dark action" mat-button (click)="onNoClick()">No Thanks</button>
+    <input mat-button [mat-dialog-close]="data.trip" cdkFocusInitial  id="save-button" class="btn btn-dark action" type="submit" value="Save">
+    </div>
+    
+    
+  </form>
+</div>
+  
+  
+  
+      <!-- CHANGE MODEL ON BE TO CONTAIN LIST<USERNAME> FOR PARTICIPANTS????-->
+  
+      <!-- In Typescript-->
+   

@@ -7,5 +7,6 @@ export interface Trip {
     description?: string;
     isPublic?: boolean;
     ownerId: string;
+    participants:string[];
     participantsId: string[];
 }

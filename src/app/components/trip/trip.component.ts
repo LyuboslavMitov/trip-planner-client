@@ -3,11 +3,12 @@ import { TripsService } from 'src/app/services/trips.service';
 import { ActivatedRoute } from '@angular/router';
 import { Trip } from 'src/app/models/Trip';
 import { User } from 'src/app/models/User';
-import { MatTabChangeEvent, MatTabGroup, MatTab } from '@angular/material';
+import { MatTabChangeEvent, MatTabGroup, MatTab, MatDialog, MatDialogRef } from '@angular/material';
 import { ScheduleService } from 'src/app/services/schedule.service';
 import { ScheduleItem } from 'src/app/models/ScheduleItem';
 import { ExpensesService } from 'src/app/services/expenses.service';
 import { Expense, UserToExpenses } from 'src/app/models/Expense';
+import { TripFormComponent } from '../trip-form/trip-form.component';
 @Component({
   selector: 'app-trip',
   templateUrl: './trip.component.html',
@@ -19,11 +20,11 @@ export class TripComponent implements OnInit, AfterViewInit {
   private trip: Trip;
   private participants: User[];
   private scheduleItems: ScheduleItem[];
-  private expenses:UserToExpenses;
+  private expenses: UserToExpenses;
   @ViewChild('tabGroup', { static: false }) tabGroup: MatTabGroup;
 
   constructor(private tripService: TripsService, private scheduleService: ScheduleService,
-    private expenseService: ExpensesService, private activatedRoute: ActivatedRoute) { }
+    private expenseService: ExpensesService, private activatedRoute: ActivatedRoute, private tripDialog: MatDialog) { }
 
   ngOnInit() {
     this.tripId = this.activatedRoute.snapshot.paramMap.get('id');
@@ -32,7 +33,6 @@ export class TripComponent implements OnInit, AfterViewInit {
     this.tripService.getTripParticipants(this.tripId).subscribe(users => this.participants = users);
     this.expenseService.getExpensesForTrip(this.tripId).subscribe(expenses => {
       this.expenses = expenses;
-      debugger;
       console.log(this.expenses)
     });
   }
@@ -69,4 +69,19 @@ export class TripComponent implements OnInit, AfterViewInit {
       case 2: this.fetchExpenses(); break;
     }
   }
+
+
+
+  openDialog(action: string): void {
+    if (action === 'Edit') { }
+    const dialogRef = this.tripDialog.open(TripFormComponent, {
+      data: { trip: this.trip, participants: this.participants }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      console.log(result);
+      this.trip = result;
+    });
+  }
 }
+

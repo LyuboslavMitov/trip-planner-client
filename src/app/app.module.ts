@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MenuComponent } from './components/menu/menu.component';
 import { LoginComponent } from './components/login/login.component';
-import {MatButtonModule, MatFormFieldModule, MatInputModule, MatCardModule, MatTableModule, MatSidenavModule, MatSelectModule, MatListModule, MatIconModule, MatTabsModule, MatExpansionPanel, MatExpansionModule, MatTreeModule} from '@angular/material'
+import { MatButtonModule, MatFormFieldModule, MatInputModule, MatCardModule, MatTableModule, MatSidenavModule, MatSelectModule, MatListModule, MatIconModule, MatTabsModule, MatExpansionPanel, MatExpansionModule, MatTreeModule, MatDatepickerModule, NativeDateAdapter, MatNativeDateModule, MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material'
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './commons/http-interceptor';
@@ -16,8 +16,10 @@ import { TripComponent } from './components/trip/trip.component';
 import { ParticipantsComponent } from './components/participants/participants.component';
 import { ScheduleComponent } from './components/schedule/schedule.component';
 import { ExpenseComponent } from './components/expense/expense.component';
+import { TripFormComponent } from './components/trip-form/trip-form.component';
 
 @NgModule({
+
   declarations: [
     AppComponent,
     MenuComponent,
@@ -27,7 +29,8 @@ import { ExpenseComponent } from './components/expense/expense.component';
     TripComponent,
     ParticipantsComponent,
     ScheduleComponent,
-    ExpenseComponent
+    ExpenseComponent,
+    TripFormComponent
   ],
   imports: [
     BrowserModule,
@@ -48,14 +51,25 @@ import { ExpenseComponent } from './components/expense/expense.component';
     MatInputModule,
     MatTabsModule,
     MatExpansionModule,
-    MatTreeModule
+    MatTreeModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatDialogModule,
+
   ],
   providers: [
+    { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
       multi: true
-    }],
-  bootstrap: [AppComponent]
+    },
+    { provide: MatDialogRef, useValue: {} },
+    { provide: MAT_DIALOG_DATA, useValue: [] },
+  ],
+  bootstrap: [AppComponent],
+  entryComponents: [
+    TripFormComponent
+  ]
 })
 export class AppModule { }

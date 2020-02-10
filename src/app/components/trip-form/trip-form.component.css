@@ -1,0 +1,15 @@
+.dialog {
+    width: 1000px;
+    min-height: 680px;
+}
+.form-field {
+    min-width: 600px;
+}
+
+#save-button {
+    margin-left: 10px;
+}
+
+.action {
+    min-width: 150px;
+}

@@ -3,9 +3,10 @@
 <p>{{trip?.description}}</p>
 <h5>Destination: {{trip?.destination}}</h5>
 <h5>Duration: {{trip?.startDate | date}} - {{trip?.endDate | date}}</h5>
+<button mat-raised-button (click)="openDialog()">Edit trip details</button>
 </div>
 
-<mat-tab-group id="trip-tab-group" #tabGroup mat-align-tabs="start" (selectedTabChange) = "tabChange($event)">
+<mat-tab-group id="trip-tab-group" #tabGroup mat-align-tabs="start" (selectedTabChange)="tabChange($event)">
     <!-- maybe query everything in this component and imput it to new components for participants schedule and expenses here.. like: 
     <mat-tab label="Participants"><app-schedule></app-participants></mat-tab> -->
     <mat-tab label="Participants">
