@@ -1,13 +1,13 @@
-<mat-list>
-    <section *ngFor="let expense of expenses | keyvalue">
-        <mat-list-item> {{expense.key}} </mat-list-item>
-            <mat-list-item>
-                <div class="container" *ngFor="let expense of expense.value">
-                        {{expense?.name}}
-                        {{expense?.amount | currency}}
-                        {{expense?.dateOfExpense | date}}
-                    </div>
-
-            </mat-list-item>
+<div class="expense-container">
+    <section class="expense-header">For?</section>
+    <section class="expense-header">How much?</section>
+    <section class="expense-header">When?</section>
+</div>
+    <section class="jumbotron" *ngFor="let expense of expenses | keyvalue">
+                <section>{{expense.key}}</section>
+                <div class="expense-container" *ngFor="let expense of expense.value">
+                        <section class="expense-prop">{{expense?.name}}</section>
+                        <section class="expense-prop">{{expense?.amount | currency}}</section>
+                        <section class="expense-prop">{{expense?.dateOfExpense | date}}</section>
+                </div>
     </section>
-</mat-list>
