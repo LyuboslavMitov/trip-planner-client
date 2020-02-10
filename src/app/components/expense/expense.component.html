@@ -1,0 +1,13 @@
+<mat-list>
+    <section *ngFor="let expense of expenses | keyvalue">
+        <mat-list-item> {{expense.key}} </mat-list-item>
+            <mat-list-item>
+                <div class="container" *ngFor="let expense of expense.value">
+                        {{expense?.name}}
+                        {{expense?.amount | currency}}
+                        {{expense?.dateOfExpense | date}}
+                    </div>
+
+            </mat-list-item>
+    </section>
+</mat-list>

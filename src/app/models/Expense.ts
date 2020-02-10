@@ -7,3 +7,8 @@ export interface Expense {
     tripId: string;
     username: string;
 }
+
+export interface UserToExpenses {
+    username:string;
+    expenses:Expense[];
+}
