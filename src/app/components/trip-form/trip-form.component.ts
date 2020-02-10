@@ -48,8 +48,8 @@ export class TripFormComponent implements OnInit, OnDestroy {
         destination: new FormControl(this.trip.destination),
         startDate: new FormControl(this.trip.startDate),
         endDate: new FormControl(this.trip.endDate),
-        description: new FormControl(''),
-        participants: new FormControl(this.trip.participants)
+        description: new FormControl(this.trip?this.trip.description:''),
+        participants: new FormControl(this.trip.participantsNames)
       });
     }
     else {
@@ -68,6 +68,15 @@ export class TripFormComponent implements OnInit, OnDestroy {
   onSubmit(formValue: any) {
     //check if it's valid
     this.trip=formValue;
+    let participantsId: string[] =[];
+    let participantsNames: string[] =[];
+    formValue.participants.forEach(element => {
+      participantsId.push(element['id']);
+      participantsNames.push(element['username']);
+    });
+    this.trip.participantsId=participantsId;
+    this.trip.participantsNames=participantsNames;
+
     this.dialogRef.close(this.trip);
   }
 }

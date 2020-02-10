@@ -22,4 +22,8 @@ export class TripsService {
   public getTripParticipants(tripId): Observable<User[]> {
     return this.http.get<User[]>(`http://localhost:8080/api/trips/${tripId}/participants`);
   }
+
+  public addTrip(trip:Trip): Observable<Trip> {
+    return this.http.post<Trip>('http://localhost:8080/api/trips',trip);
+  }
 }
