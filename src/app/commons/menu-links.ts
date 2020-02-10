@@ -6,9 +6,9 @@ export interface ILink {
 
 export const guestLinks: ILink[] = [
     {
-        name: 'Home',
+        name: 'Login',
         class: 'nav-item nav-link',
-        routerLink: ''
+        routerLink: '/login'
     },
     // {
     //     name: 'Login',

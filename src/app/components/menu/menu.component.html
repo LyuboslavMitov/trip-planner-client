@@ -20,15 +20,7 @@
         >
           {{ link.name }}
         </a>
-        <a *ngIf="this.userRole" class="nav-item nav-link end" (click)="logout()"
-          >Logout</a
-        >
-        <a
-          *ngIf="!this.userRole"
-          class="nav-item nav-link end"
-          [routerLink]="'/login'"
-          >Login</a
-        >
+        <a *ngIf="this.userRole" class="nav-item nav-link end" (click)="logout()">Logout</a>
       </div>
     </div>
   </nav>
