@@ -1,13 +1,24 @@
 .expense-prop{
     max-width: 300px;
-    margin-left:250px;
+    min-width: 300px;
+    text-align:end;
+    /* margin-left:250px; */
 }
 
 .expense-header{
     max-width: 300px;
-    margin-left:265px;
+    min-width: 300px;
+    text-align: end;
 }
+
+
 .expense-container{
     margin-top: 10px;
     display: flex;
+}
+
+.expense-header-container{
+    margin-top: 10px;
+    display: flex;
+    margin-left: 32px;
 }

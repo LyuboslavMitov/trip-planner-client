@@ -1,13 +1,13 @@
-<div class="expense-container">
+<div class="expense-header-container">
     <section class="expense-header">For?</section>
     <section class="expense-header">How much?</section>
     <section class="expense-header">When?</section>
 </div>
-    <section class="jumbotron" *ngFor="let expense of expenses | keyvalue">
+    <article class="jumbotron" *ngFor="let expense of expenses | keyvalue">
                 <section>{{expense.key}}</section>
                 <div class="expense-container" *ngFor="let expense of expense.value">
                         <section class="expense-prop">{{expense?.name}}</section>
                         <section class="expense-prop">{{expense?.amount | currency}}</section>
                         <section class="expense-prop">{{expense?.dateOfExpense | date}}</section>
                 </div>
-    </section>
+    </article>
