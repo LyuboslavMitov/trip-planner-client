@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
       (res) => {
         localStorage.setItem('token', res.token);
         console.log(this.authService.getUserId());
-        this.router.navigate(['/']);
+        this.router.navigate(['/myTrips']);
         return true;
       },
       (err: HttpErrorResponse) => {

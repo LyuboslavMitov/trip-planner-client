@@ -6,6 +6,7 @@
             <mat-panel-title>
                 {{item?.name}}
             </mat-panel-title>
+            <div class="btn btn-dark" (click)="onEdit(item)">Edit</div>
             <mat-panel-description>
                 {{item?.date | date}}
             </mat-panel-description>

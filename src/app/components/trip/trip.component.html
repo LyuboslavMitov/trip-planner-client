@@ -13,7 +13,7 @@
         <app-participants [participants]="participants"></app-participants>
     </mat-tab>
     <mat-tab label="Schedule">
-        <app-schedule [scheduleItems]="scheduleItems"></app-schedule>
+        <app-schedule [participants]="participants" [scheduleItems]="scheduleItems"></app-schedule>
     </mat-tab>
     <mat-tab label="Expense">
         <app-expense [expenses]="expenses" [participants]="participants"></app-expense>

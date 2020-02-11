@@ -36,7 +36,7 @@ export class TripFormComponent implements OnInit, OnDestroy {
     this.dialogRef.close();
   }
   ngOnDestroy(): void {
-    this.trip ? this.dialogRef.close(this.trip):this.dialogRef.close();
+    // this.trip ? this.dialogRef.close(this.trip) : this.dialogRef.close();
   }
 
   createTripForm() {
@@ -48,7 +48,7 @@ export class TripFormComponent implements OnInit, OnDestroy {
         destination: new FormControl(this.trip.destination),
         startDate: new FormControl(this.trip.startDate),
         endDate: new FormControl(this.trip.endDate),
-        description: new FormControl(this.trip?this.trip.description:''),
+        description: new FormControl(this.trip.description ? this.trip.description : ''),
         participants: new FormControl(this.trip.participantsNames)
       });
     }
@@ -67,16 +67,24 @@ export class TripFormComponent implements OnInit, OnDestroy {
 
   onSubmit(formValue: any) {
     //check if it's valid
-    this.trip=formValue;
-    let participantsId: string[] =[];
-    let participantsNames: string[] =[];
-    formValue.participants.forEach(element => {
-      participantsId.push(element['id']);
-      participantsNames.push(element['username']);
-    });
-    this.trip.participantsId=participantsId;
-    this.trip.participantsNames=participantsNames;
-
-    this.dialogRef.close(this.trip);
+    let trip = formValue;
+    let participantsId: string[] = [];
+    let participantsNames: string[] = [];
+    if (formValue.participants) {
+      debugger;
+      formValue.participants.forEach(element => {
+        participantsId.push(element['id']);
+        participantsNames.push(element);
+      });
+      trip.participantsId = participantsId;
+      trip.participantsNames = participantsNames;
+    }
+    //get the coorect id and names -> from this.trip
+    else {
+      debugger;
+      trip.participantsId = this.trip.participantsId;
+      trip.participantsNames = this.trip.participantsNames;
+    }
+    this.dialogRef.close(trip);
   }
 }

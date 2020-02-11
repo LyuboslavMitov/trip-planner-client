@@ -78,9 +78,16 @@ export class TripComponent implements OnInit, AfterViewInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      console.log(result);
-      this.trip = result;
+      if(result){
+        // this.trip = result;
+        result.id=this.tripId;
+        result.ownerId=this.trip.ownerId;
+        debugger;
+        this.tripService.updateTrip(result).subscribe(updatedTrip=>this.trip=updatedTrip);
+      }
     });
   }
 }
 
+//5e4303ae2879660a646c0679 ORIGINAL tripId
+//

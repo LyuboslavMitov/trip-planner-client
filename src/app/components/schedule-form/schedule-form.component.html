@@ -1,0 +1,66 @@
+<div [formGroup]="scheduleForm" class="dialog" mat-dialog-content>
+
+    <mat-form-field class="form-field">
+
+        <input matInput placeholder="Schedule summary" formControlName="name">
+
+    </mat-form-field>
+
+    <mat-form-field class="form-field">
+
+        <input matInput placeholder="Location" formControlName="location">
+
+    </mat-form-field>
+
+    <mat-form-field class="form-field" appearance="outline">
+
+        <mat-label>Description</mat-label>
+
+        <textarea matInput formControlName="description"></textarea>
+
+    </mat-form-field>
+
+    <!-- YOU HAVE TO WATCH FOR CHANGES IN THESE TO UPDATE THE MIN AND MAX OF THE DATE PICKER -->
+
+    <mat-form-field class="form-field">
+
+        <input matInput formControlName="date" placeholder="Date:" [matDatepicker]="date">
+
+        <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>
+
+        <mat-datepicker #date></mat-datepicker>
+
+    </mat-form-field>
+
+
+
+    <mat-form-field class="form-field">
+
+        <input matInput placeholder="Duration in hours" type="number" formControlName="duration">
+
+    </mat-form-field>
+
+    <mat-form-field class="form-field">
+
+        <mat-label>Participants</mat-label>
+
+        <mat-select formControlName="participants" multiple>
+
+            <mat-option *ngFor="let user of participants" [value]="user">{{user?.username}}</mat-option>
+
+        </mat-select>
+
+    </mat-form-field>
+
+
+
+    <div mat-dialog-actions>
+
+        <button class="btn btn-dark action" mat-button (click)="onCancelClick()">Cancel</button>
+
+        <button mat-button cdkFocusInitial [mat-dialog-close]="scheduleForm.value" id="save-button"
+            class="btn btn-dark action" (click)="onSubmit(scheduleForm.value)">Save</button>
+
+    </div>
+
+</div>
