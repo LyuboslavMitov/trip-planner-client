@@ -27,6 +27,7 @@ export class TripFormComponent implements OnInit, OnDestroy {
   ngOnInit() {
     if (this.data) {
       this.trip = this.data.trip;
+      debugger;
       this.participants = this.data.participants;
     }
     this.createTripForm();
@@ -65,26 +66,29 @@ export class TripFormComponent implements OnInit, OnDestroy {
     }
   }
 
-  onSubmit(formValue: any) {
+  onSubmit(formValue: any,action:string) {
     //check if it's valid
     let trip = formValue;
     let participantsId: string[] = [];
     let participantsNames: string[] = [];
+
+    
     if (formValue.participants) {
-      debugger;
       formValue.participants.forEach(element => {
         participantsId.push(element['id']);
-        participantsNames.push(element);
+        participantsNames.push(element['username']);
       });
       trip.participantsId = participantsId;
       trip.participantsNames = participantsNames;
     }
     //get the coorect id and names -> from this.trip
-    else {
-      debugger;
+    if (this.trip) {
+      this.trip.participantsNames.forEach(user => participantsNames.push(user['username']))
       trip.participantsId = this.trip.participantsId;
-      trip.participantsNames = this.trip.participantsNames;
+      console.log(trip.participantsNames);
+      debugger;
     }
+
     this.dialogRef.close(trip);
   }
 }

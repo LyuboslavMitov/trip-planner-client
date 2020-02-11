@@ -30,7 +30,7 @@ export class ScheduleComponent implements OnInit {
       if (editItem != result) {
         console.log('different')
         let tripId : string = this.activatedRoute.snapshot.paramMap.get('id');
-        this.scheduleService.addScheduleItem(tripId)
+        // this.scheduleService.addScheduleItem(tripId)
       }
       console.log(result);
     });

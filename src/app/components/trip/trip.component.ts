@@ -9,6 +9,7 @@ import { ScheduleItem } from 'src/app/models/ScheduleItem';
 import { ExpensesService } from 'src/app/services/expenses.service';
 import { Expense, UserToExpenses } from 'src/app/models/Expense';
 import { TripFormComponent } from '../trip-form/trip-form.component';
+import { UserService } from 'src/app/services/user.service';
 @Component({
   selector: 'app-trip',
   templateUrl: './trip.component.html',
@@ -19,16 +20,20 @@ export class TripComponent implements OnInit, AfterViewInit {
   private tripId: string;
   private trip: Trip;
   private participants: User[];
+  private allUsers:User[];
   private scheduleItems: ScheduleItem[];
   private expenses: UserToExpenses;
   @ViewChild('tabGroup', { static: false }) tabGroup: MatTabGroup;
 
   constructor(private tripService: TripsService, private scheduleService: ScheduleService,
-    private expenseService: ExpensesService, private activatedRoute: ActivatedRoute, private tripDialog: MatDialog) { }
+    private expenseService: ExpensesService, private activatedRoute: ActivatedRoute, private tripDialog: MatDialog,
+    private userService:UserService) { }
 
   ngOnInit() {
     this.tripId = this.activatedRoute.snapshot.paramMap.get('id');
 
+
+    this.userService.getAllUsers().subscribe(users=>this.allUsers=users);
     this.tripService.getTripById(this.tripId).subscribe(tripRes => this.trip = tripRes);
     this.tripService.getTripParticipants(this.tripId).subscribe(users => this.participants = users);
     this.expenseService.getExpensesForTrip(this.tripId).subscribe(expenses => {
@@ -73,8 +78,9 @@ export class TripComponent implements OnInit, AfterViewInit {
 
 
   openDialog(action: string): void {
+    debugger;
     const dialogRef = this.tripDialog.open(TripFormComponent, {
-      data: { trip: this.trip, participants: this.participants }
+      data: { trip: this.trip, participants: this.allUsers }
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');

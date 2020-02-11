@@ -65,6 +65,7 @@ export class ScheduleFormComponent implements OnInit {
       participantsId.push(element['id']);
     });
     this.scheduleItem.participantsId = participantsId;
+    debugger;
     this.dialogRef.close(this.scheduleItem);
   }
 
