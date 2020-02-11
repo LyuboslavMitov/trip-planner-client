@@ -26,4 +26,8 @@ export class TripsService {
   public addTrip(trip:Trip): Observable<Trip> {
     return this.http.post<Trip>('http://localhost:8080/api/trips',trip);
   }
+
+  public updateTrip(trip:Trip): Observable<Trip> {
+    return this.http.put<Trip>(`http://localhost:8080/api/trips/${trip.id}`,trip);
+  }
 }

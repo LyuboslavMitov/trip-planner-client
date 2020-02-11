@@ -8,4 +8,5 @@ export interface ScheduleItem {
     dayOfTrip?: string;
     tripId: string;
     participantsId: string[];
+    participantsNames: string[];
 }

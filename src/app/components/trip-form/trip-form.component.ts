@@ -18,7 +18,7 @@ export interface DialogData {
 
 export class TripFormComponent implements OnInit, OnDestroy {
 
-
+  action: string;
   tripForm: FormGroup;
   trip: Trip;
   participants: User[];
@@ -30,6 +30,8 @@ export class TripFormComponent implements OnInit, OnDestroy {
       debugger;
       this.participants = this.data.participants;
     }
+    this.trip ? this.action='Update' : this.action='Create'
+
     this.createTripForm();
   }
 
@@ -66,29 +68,38 @@ export class TripFormComponent implements OnInit, OnDestroy {
     }
   }
 
-  onSubmit(formValue: any,action:string) {
+  onSubmit(formValue: any, action: string) {
     //check if it's valid
     let trip = formValue;
     let participantsId: string[] = [];
     let participantsNames: string[] = [];
 
-    
-    if (formValue.participants) {
-      formValue.participants.forEach(element => {
+    debugger;
+    if (this.action == 'Create') {
+      if (formValue.participants) {
+        formValue.participants.forEach(element => {
+          participantsId.push(element['id']);
+          participantsNames.push(element['username']);
+        });
+        trip.participantsId = participantsId;
+        trip.participantsNames = participantsNames;
+      }
+      //Test if you need this???
+      // if (this.trip) {
+      //   this.trip.participantsNames.forEach(user => participantsNames.push(user['username']))
+      //   trip.participantsId = this.trip.participantsId;
+      //   console.log(trip.participantsNames);
+      // }
+    }
+    if(this.action=='Update') {
+      debugger;
+      trip.participants.forEach(element => {
         participantsId.push(element['id']);
         participantsNames.push(element['username']);
       });
       trip.participantsId = participantsId;
       trip.participantsNames = participantsNames;
     }
-    //get the coorect id and names -> from this.trip
-    if (this.trip) {
-      this.trip.participantsNames.forEach(user => participantsNames.push(user['username']))
-      trip.participantsId = this.trip.participantsId;
-      console.log(trip.participantsNames);
-      debugger;
-    }
-
     this.dialogRef.close(trip);
   }
 }

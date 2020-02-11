@@ -17,6 +17,7 @@ import { ParticipantsComponent } from './components/participants/participants.co
 import { ScheduleComponent } from './components/schedule/schedule.component';
 import { ExpenseComponent } from './components/expense/expense.component';
 import { TripFormComponent } from './components/trip-form/trip-form.component';
+import { ScheduleFormComponent } from './components/schedule-form/schedule-form.component';
 
 @NgModule({
 
@@ -30,7 +31,8 @@ import { TripFormComponent } from './components/trip-form/trip-form.component';
     ParticipantsComponent,
     ScheduleComponent,
     ExpenseComponent,
-    TripFormComponent
+    TripFormComponent,
+    ScheduleFormComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +71,8 @@ import { TripFormComponent } from './components/trip-form/trip-form.component';
   ],
   bootstrap: [AppComponent],
   entryComponents: [
-    TripFormComponent
+    TripFormComponent,
+    ScheduleFormComponent
   ]
 })
 export class AppModule { }
