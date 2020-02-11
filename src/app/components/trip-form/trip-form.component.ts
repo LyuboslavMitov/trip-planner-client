@@ -30,7 +30,7 @@ export class TripFormComponent implements OnInit, OnDestroy {
       debugger;
       this.participants = this.data.participants;
     }
-    this.trip ? this.action='Update' : this.action='Create'
+    this.trip ? this.action = 'Update' : this.action = 'Create'
 
     this.createTripForm();
   }
@@ -78,12 +78,12 @@ export class TripFormComponent implements OnInit, OnDestroy {
     if (this.action == 'Create') {
       if (formValue.participants) {
         formValue.participants.forEach(element => {
-          participantsId.push(element['id']);
+          // participantsId.push(element['id']);
           participantsNames.push(element['username']);
         });
-        trip.participantsId = participantsId;
-        trip.participantsNames = participantsNames;
       }
+      trip.participantsId = participantsId;
+      trip.participantsNames = participantsNames;
       //Test if you need this???
       // if (this.trip) {
       //   this.trip.participantsNames.forEach(user => participantsNames.push(user['username']))
@@ -91,15 +91,23 @@ export class TripFormComponent implements OnInit, OnDestroy {
       //   console.log(trip.participantsNames);
       // }
     }
-    if(this.action=='Update') {
+    if (this.action == 'Update') {
       debugger;
+
+
       trip.participants.forEach(element => {
-        participantsId.push(element['id']);
-        participantsNames.push(element['username']);
+        // participantsId.push(element['id']);
+
+        if(element.hasOwnProperty('username')){
+          participantsNames.push(element['username']);
+        }
+        else {
+          participantsNames.push(element)
+        }
       });
-      trip.participantsId = participantsId;
-      trip.participantsNames = participantsNames;
-    }
+    trip.participantsId = participantsId;
+    trip.participantsNames = participantsNames;
+  }
     this.dialogRef.close(trip);
   }
 }
