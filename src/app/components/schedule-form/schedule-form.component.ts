@@ -9,10 +9,11 @@ import { FormGroup, FormControl } from '@angular/forms';
   templateUrl: './schedule-form.component.html',
   styleUrls: ['./schedule-form.component.css']
 })
-export class ScheduleFormComponent implements OnInit {
+export class ScheduleFormComponent implements OnInit { 
   scheduleForm: FormGroup;
   scheduleItem: ScheduleItem;
   participants: User[];
+  action:string;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<ScheduleFormComponent>) { }
 
@@ -21,6 +22,7 @@ export class ScheduleFormComponent implements OnInit {
     if (this.data) {
       this.scheduleItem = this.data.scheduleItem;
       this.participants = this.data.participants;
+      this.action=this.data.action;
     }
     this.createScheduleForm();
   }
@@ -58,13 +60,7 @@ export class ScheduleFormComponent implements OnInit {
   onSubmit(formValue: any) {
     //check if it's valid 
     this.scheduleItem = formValue;
-    let participantsId: string[] = [];
-    let participantsNames: string[] = [];
-
-    formValue.participants.forEach(element => {
-      participantsId.push(element['id']);
-    });
-    this.scheduleItem.participantsId = participantsId;
+    this.scheduleItem.participantsNames = formValue.participants;
     debugger;
     this.dialogRef.close(this.scheduleItem);
   }

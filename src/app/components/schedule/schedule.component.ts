@@ -23,14 +23,18 @@ export class ScheduleComponent implements OnInit {
   public onEdit(editItem: ScheduleItem) {
     console.log(editItem)
     const dialogRef = this.scheduleDialog.open(ScheduleFormComponent, {
-      data: { scheduleItem: editItem, participants: this.participants }
+      data: { scheduleItem: editItem, participants: this.participants , action:'Edit'}
     });
     dialogRef.afterClosed().subscribe(result => {
       debugger;
+      result.id = editItem.id;
       if (editItem != result) {
         console.log('different')
         let tripId : string = this.activatedRoute.snapshot.paramMap.get('id');
-        // this.scheduleService.addScheduleItem(tripId)
+        this.scheduleService.updateScheduleItem(tripId,result).subscribe(updatedItem=>{
+          debugger;
+          console.log(updatedItem);
+        });
       }
       console.log(result);
     });

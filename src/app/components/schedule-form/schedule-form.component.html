@@ -46,7 +46,7 @@
 
         <mat-select formControlName="participants" multiple>
 
-            <mat-option *ngFor="let user of participants" [value]="user">{{user?.username}}</mat-option>
+            <mat-option *ngFor="let user of participants" [value]="user.username">{{user?.username}}</mat-option>
 
         </mat-select>
 

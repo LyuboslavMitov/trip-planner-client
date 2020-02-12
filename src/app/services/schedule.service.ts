@@ -18,6 +18,6 @@ export class ScheduleService {
   }
 
   public updateScheduleItem(tripId:string, scheduleItem:ScheduleItem) :Observable<ScheduleItem> {
-    return this.http.put<ScheduleItem>(`http://localhost:8080/api/scheduleItems/${tripId}`, scheduleItem);
+    return this.http.put<ScheduleItem>(`http://localhost:8080/api/scheduleItems/${tripId}/${scheduleItem.id}`, scheduleItem);
   }
 }
