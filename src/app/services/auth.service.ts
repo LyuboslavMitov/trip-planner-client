@@ -39,6 +39,10 @@ export class AuthService {
       return this.getDecodedToken() && this.getDecodedToken().rol[0];
   }
 
+  public getUserName(): string {
+      return this.getDecodedToken() ? this.getDecodedToken().sub : undefined;
+  }
+
   public getUserId(): string {
       return this.getDecodedToken().id;
   }

@@ -1,0 +1,48 @@
+<div [formGroup]="expenseForm" class="dialog" mat-dialog-content>
+
+    ​
+    
+    <mat-form-field class="form-field">
+    
+    <input matInput placeholder="Expense summary" formControlName="name">
+    
+    </mat-form-field>
+    
+    ​
+    
+    <mat-form-field class="form-field" appearance="outline">
+    
+    <mat-label>Description</mat-label>
+    
+    <textarea matInput formControlName="description"></textarea>
+    
+    </mat-form-field>
+    
+    <mat-form-field class="form-field">
+    
+    <input matInput formControlName="dateOfExpense" placeholder="Date:" [matDatepicker]="dateOfExpense">
+    
+    <mat-datepicker-toggle matSuffix [for]="dateOfExpense"></mat-datepicker-toggle>
+    
+    <mat-datepicker #dateOfExpense></mat-datepicker>
+    
+    </mat-form-field>
+    
+        
+    
+        <mat-form-field class="form-field">
+    
+    <input matInput placeholder="Amount" type="number" formControlName="amount">
+    
+    </mat-form-field>
+        
+    
+    <div mat-dialog-actions>
+    
+    <button class="btn btn-dark action" mat-button (click)="onNoClick()">No Thanks</button>
+    
+    <button mat-button cdkFocusInitial [mat-dialog-close]="expenseForm.value" id="save-button" class="btn btn-dark action" (click)="onSubmit(expenseForm.value)">Save</button>
+    
+    </div>
+    
+    </div>

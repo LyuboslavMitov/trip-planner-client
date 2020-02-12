@@ -13,4 +13,7 @@ export class ExpensesService {
   public getExpensesForTrip(tripId:string):Observable<UserToExpenses>{
     return this.http.get<UserToExpenses>(`http://localhost:8080/api/expenses/${tripId}`);
   }
+  public addNewExpenseForTrip(tripId:string, newExpense:Expense):Observable<Expense> {
+    return this.http.post<Expense>(`http://localhost:8080/api/expenses/${tripId}`,newExpense);
+  }
 }
