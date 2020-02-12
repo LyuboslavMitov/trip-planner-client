@@ -26,7 +26,6 @@ export class ScheduleComponent implements OnInit {
       data: { scheduleItem: editItem, participants: this.participants, action: 'Edit' }
     });
     dialogRef.afterClosed().subscribe(result => {
-      debugger;
       if (result) {
         result.id = editItem.id;
         if (editItem != result) {

@@ -16,6 +16,6 @@
         <app-schedule [participants]="participants" [scheduleItems]="scheduleItems"></app-schedule>
     </mat-tab>
     <mat-tab label="Expense">
-        <app-expense [expenses]="expenses" [participants]="participants"></app-expense>
+        <app-expense [expenses]="expenses" [participants]="participants" (event)="fetchExpenses()"></app-expense>
     </mat-tab>
 </mat-tab-group>

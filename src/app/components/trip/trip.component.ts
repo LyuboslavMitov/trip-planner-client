@@ -57,7 +57,7 @@ export class TripComponent implements OnInit, AfterViewInit {
     this.scheduleService.getScheduleForTrip(this.tripId).subscribe(scheduleItems => this.scheduleItems = scheduleItems);
   }
 
-  private fetchExpenses() {
+  public fetchExpenses() {
     this.expenseService.getExpensesForTrip(this.tripId).subscribe(expenses => {
       this.expenses = expenses;
       console.log(this.expenses)

@@ -22,3 +22,10 @@
     display: flex;
     margin-left: 32px;
 }
+
+.edit {
+    height:30px;
+    width:60px;
+    padding-bottom: 15px;
+    margin-left: 10px;
+}

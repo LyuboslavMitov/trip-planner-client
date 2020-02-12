@@ -10,6 +10,7 @@
                         <section class="expense-prop">{{expense?.name}}</section>
                         <section class="expense-prop">{{expense?.amount | currency}}</section>
                         <section class="expense-prop">{{expense?.dateOfExpense | date}}</section>
+                        <button class="edit btn-dark" (click)="onEdit(expense)" *ngIf="isOwner(expense)"><mat-icon>edit</mat-icon></button>
                 </div>
     </article>
 <section class="btn btn-dark" (click)="onCreate()">Add +</section>
