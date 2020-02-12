@@ -9,11 +9,11 @@ import { FormGroup, FormControl } from '@angular/forms';
   templateUrl: './schedule-form.component.html',
   styleUrls: ['./schedule-form.component.css']
 })
-export class ScheduleFormComponent implements OnInit { 
+export class ScheduleFormComponent implements OnInit {
   scheduleForm: FormGroup;
   scheduleItem: ScheduleItem;
   participants: User[];
-  action:string;
+  action: string;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<ScheduleFormComponent>) { }
 
@@ -22,7 +22,7 @@ export class ScheduleFormComponent implements OnInit {
     if (this.data) {
       this.scheduleItem = this.data.scheduleItem;
       this.participants = this.data.participants;
-      this.action=this.data.action;
+      this.action = this.data.action;
     }
     this.createScheduleForm();
   }
@@ -31,7 +31,7 @@ export class ScheduleFormComponent implements OnInit {
   }
   ngOnDestroy(): void {
     //TODO: Refactor this to be handled in the calling function 
-    this.scheduleItem ? this.dialogRef.close(this.scheduleItem) : this.dialogRef.close();
+    // this.scheduleItem ? this.dialogRef.close(this.scheduleItem) : this.dialogRef.close();
   }
   createScheduleForm() {
     if (this.scheduleItem) {
@@ -53,16 +53,22 @@ export class ScheduleFormComponent implements OnInit {
         date: new FormControl(''),
         description: new FormControl(),
         duration: new FormControl(),
-        participants: new FormControl('')
+        participants: new FormControl([])
       });
     }
   }
   onSubmit(formValue: any) {
-    //check if it's valid 
-    this.scheduleItem = formValue;
-    this.scheduleItem.participantsNames = formValue.participants;
-    debugger;
-    this.dialogRef.close(this.scheduleItem);
-  }
+    //check if it's valid
+    if (this.action == 'Edit') {
+      this.scheduleItem = formValue;
+      this.scheduleItem.participantsNames = formValue.participants;
+      this.dialogRef.close(this.scheduleItem);
+    }
 
+    if (this.action == 'Create') {
+      let newItem:ScheduleItem = formValue;
+      newItem.participantsNames = formValue.participants;
+      this.dialogRef.close(newItem);
+    }
+  }
 }

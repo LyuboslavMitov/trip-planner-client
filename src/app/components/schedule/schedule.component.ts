@@ -23,21 +23,34 @@ export class ScheduleComponent implements OnInit {
   public onEdit(editItem: ScheduleItem) {
     console.log(editItem)
     const dialogRef = this.scheduleDialog.open(ScheduleFormComponent, {
-      data: { scheduleItem: editItem, participants: this.participants , action:'Edit'}
+      data: { scheduleItem: editItem, participants: this.participants, action: 'Edit' }
     });
     dialogRef.afterClosed().subscribe(result => {
       debugger;
-      result.id = editItem.id;
-      if (editItem != result) {
-        console.log('different')
-        let tripId : string = this.activatedRoute.snapshot.paramMap.get('id');
-        this.scheduleService.updateScheduleItem(tripId,result).subscribe(updatedItem=>{
-          debugger;
-          console.log(updatedItem);
-        });
+      if (result) {
+        result.id = editItem.id;
+        if (editItem != result) {
+          let tripId: string = this.activatedRoute.snapshot.paramMap.get('id');
+          this.scheduleService.updateScheduleItem(tripId, result).subscribe(updatedItem => {
+          });
+        }
       }
-      console.log(result);
     });
+  }
 
+  public onCreate() {
+    const dialogRef = this.scheduleDialog.open(ScheduleFormComponent, {
+      data: { participants: this.participants, action: 'Create' }
+    });
+    let tripId: string = this.activatedRoute.snapshot.paramMap.get('id');
+
+    dialogRef.afterClosed().subscribe(result => {
+      debugger;
+      this.scheduleService.addScheduleItem(tripId, result).subscribe(newItem => {
+        console.log(newItem);
+        this.scheduleItems.push(newItem);
+      });
+
+    });
   }
 }

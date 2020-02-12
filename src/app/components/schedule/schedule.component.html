@@ -1,5 +1,4 @@
 <mat-accordion>
-
     <mat-expansion-panel *ngFor="let item of scheduleItems" (opened)="panelOpenState = true"
         (closed)="panelOpenState = false">
         <mat-expansion-panel-header>
@@ -17,3 +16,4 @@
         <!--TODO: add actions -->
     </mat-expansion-panel>
 </mat-accordion>
+<div class="btn btn-dark" id="createButton" (click)="onCreate()">Add+</div>
