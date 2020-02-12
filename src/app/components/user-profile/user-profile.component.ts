@@ -24,6 +24,7 @@ export class UserProfileComponent implements OnInit {
 
   ngOnInit() {
     this.currentUser.id = this.authService.getUserId();
+    this.userForm.disable();
     this.userService.getUserInfo(this.currentUser.id).subscribe(user => {
       this.currentUser = user;
     });

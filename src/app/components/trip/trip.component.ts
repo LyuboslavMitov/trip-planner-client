@@ -19,7 +19,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class TripComponent implements OnInit, AfterViewInit {
 
   private tripId: string;
-  private isOwner:boolean;
+  private isOwner:boolean = true;
   private trip: Trip;
   private participants: User[];
   private allUsers:User[];

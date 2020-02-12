@@ -1,17 +1,17 @@
 <mat-card>
     <form [formGroup]="userForm" (ngSubmit)="onSubmit(userForm.value)">
-        <div>
-        <mat-form-field>
+        <div>Username:
+        <mat-form-field class="form-field">
         <input matInput id="username" type="text" formControlName="username" value="{{currentUser.username}}">
         </mat-form-field>
     </div>
-        <div>
-            <mat-form-field>
-            <input matInput id="firstname" type="text" formControlName="firstName" value="{{currentUser.firstName}}">
+        <div>First Name:
+            <mat-form-field  class="form-field">
+            <input [disabled]="true" matInput id="firstname" type="text" formControlName="firstName" value="{{currentUser.firstName}}">
             </mat-form-field>
         </div>
-        <div>
-            <mat-form-field>
+        <div>Last Name:
+            <mat-form-field class="form-field">
             <input matInput id="lastname" type="text" formControlName="lastName" value="{{currentUser.lastName}}">
         </mat-form-field>
         </div>

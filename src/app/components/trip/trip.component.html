@@ -3,7 +3,7 @@
 <p>{{trip?.description}}</p>
 <h5>Destination: {{trip?.destination}}</h5>
 <h5>Duration: {{trip?.startDate | date}} - {{trip?.endDate | date}}</h5>
-<button mat-raised-button [disabled]="!giisOwner" (click)="openDialog()">Edit trip details</button>
+<button mat-raised-button [disabled]="!isOwner" (click)="openDialog()">Edit trip details</button>
 </div>
 
 <mat-tab-group id="trip-tab-group" #tabGroup mat-align-tabs="start" (selectedTabChange)="tabChange($event)">

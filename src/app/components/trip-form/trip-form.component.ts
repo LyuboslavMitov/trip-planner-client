@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Inject, OnDestroy } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Trip } from 'src/app/models/Trip';
 import { User } from 'src/app/models/User';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
@@ -47,8 +47,8 @@ export class TripFormComponent implements OnInit, OnDestroy {
     if (this.trip) {
       //     <!-- Edit form-->
       this.tripForm = new FormGroup({
-        name: new FormControl(this.trip.name),
-        destination: new FormControl(this.trip.destination),
+        name: new FormControl(this.trip.name,Validators.required),
+        destination: new FormControl(this.trip.destination,Validators.required),
         startDate: new FormControl(this.trip.startDate),
         endDate: new FormControl(this.trip.endDate),
         description: new FormControl(this.trip.description ? this.trip.description : ''),
