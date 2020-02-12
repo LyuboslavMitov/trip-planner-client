@@ -34,6 +34,11 @@ export const registeredLinks: ILink[] = [
         class: 'nav-item nav-link',
         routerLink: '/myTrips'
     },
+    {
+        name:'Other trips',
+        class:'nav-item nav-link',
+        routerLink: '/myOtherTrips'
+    }
     // {
     //     name: 'Login',
     //     class: 'nav-item nav-link',

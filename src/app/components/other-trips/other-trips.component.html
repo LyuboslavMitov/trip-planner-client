@@ -1,10 +1,6 @@
-<mat-card *ngFor="let trip of trips" class="trip-card hovernow" [routerLink]="['/myTrips',trip.id]">
+<mat-card *ngFor="let trip of otherTrips" class="trip-card hovernow"[routerLink]="['/myTrips',trip.id]" >
     <mat-card-title>{{trip.name}}</mat-card-title>
     <mat-card-subtitle>Destination: {{trip.destination}}</mat-card-subtitle>
     <mat-card-subtitle>Date: {{trip.startDate | date}} - {{trip.endDate | date}}</mat-card-subtitle>
     <mat-card-content>{{trip?.description}}</mat-card-content>
-</mat-card>
-
-<mat-card class="create-card hovernow-create" (click)="openCreateTripDialog()">
-    <mat-card-title>Create new Trip</mat-card-title>
-</mat-card>
+    </mat-card>

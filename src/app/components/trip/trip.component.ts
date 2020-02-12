@@ -10,6 +10,7 @@ import { ExpensesService } from 'src/app/services/expenses.service';
 import { Expense, UserToExpenses } from 'src/app/models/Expense';
 import { TripFormComponent } from '../trip-form/trip-form.component';
 import { UserService } from 'src/app/services/user.service';
+import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-trip',
   templateUrl: './trip.component.html',
@@ -18,6 +19,7 @@ import { UserService } from 'src/app/services/user.service';
 export class TripComponent implements OnInit, AfterViewInit {
 
   private tripId: string;
+  private isOwner:boolean;
   private trip: Trip;
   private participants: User[];
   private allUsers:User[];
@@ -26,15 +28,19 @@ export class TripComponent implements OnInit, AfterViewInit {
   @ViewChild('tabGroup', { static: false }) tabGroup: MatTabGroup;
 
   constructor(private tripService: TripsService, private scheduleService: ScheduleService,
-    private expenseService: ExpensesService, private activatedRoute: ActivatedRoute, private tripDialog: MatDialog,
+    private expenseService: ExpensesService, private activatedRoute: ActivatedRoute, private tripDialog: MatDialog, private authService:AuthService,
     private userService:UserService) { }
 
   ngOnInit() {
     this.tripId = this.activatedRoute.snapshot.paramMap.get('id');
 
+    
 
     this.userService.getAllUsers().subscribe(users=>this.allUsers=users);
-    this.tripService.getTripById(this.tripId).subscribe(tripRes => this.trip = tripRes);
+    this.tripService.getTripById(this.tripId).subscribe(tripRes => {
+      this.isOwner = tripRes.ownerId==this.authService.getUserId();
+      this.trip = tripRes
+    });
     this.tripService.getTripParticipants(this.tripId).subscribe(users => this.participants = users);
     this.expenseService.getExpensesForTrip(this.tripId).subscribe(expenses => {
       this.expenses = expenses;
@@ -87,7 +93,6 @@ export class TripComponent implements OnInit, AfterViewInit {
       if(result){
         // this.trip = result;
         result.id=this.tripId;
-        result.ownerId=this.trip.ownerId;
         debugger;
         this.tripService.updateTrip(result).subscribe(updatedTrip=>this.trip=updatedTrip);
       }

@@ -18,6 +18,7 @@ import { ScheduleComponent } from './components/schedule/schedule.component';
 import { ExpenseComponent } from './components/expense/expense.component';
 import { TripFormComponent } from './components/trip-form/trip-form.component';
 import { ScheduleFormComponent } from './components/schedule-form/schedule-form.component';
+import { OtherTripsComponent } from './components/other-trips/other-trips.component';
 
 @NgModule({
 
@@ -32,7 +33,8 @@ import { ScheduleFormComponent } from './components/schedule-form/schedule-form.
     ScheduleComponent,
     ExpenseComponent,
     TripFormComponent,
-    ScheduleFormComponent
+    ScheduleFormComponent,
+    OtherTripsComponent
   ],
   imports: [
     BrowserModule,
