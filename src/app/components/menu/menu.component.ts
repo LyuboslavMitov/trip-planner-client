@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit, OnDestroy {
-  links: ILink[] = registeredLinks;
+  public links: ILink[] = registeredLinks;
 
   constructor(
     private router: Router,
@@ -23,18 +23,7 @@ export class MenuComponent implements OnInit, OnDestroy {
   ngOnDestroy() { }
 
 
-  private setLinks() {
-    //   switch (this.userRole) {
-    //     case COMPANY:
-    //       this.links = companyLinks;
-    //       return;
-    //     case TRAVELER:
-    //       this.links = travelerLinks;
-    //       return;
-    //     default:
-    //       this.links = guestLinks;
-    //   }
-    // }
-    this.authService.isAuthenticated() ? this.links = registeredLinks: this.links=guestLinks;
+  public setLinks() {
+    this.authService.userRole$.subscribe(role=>this.authService.isAuthenticated() ? this.links = registeredLinks: this.links=guestLinks)
   }
 }

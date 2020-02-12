@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
     }).subscribe(
       (res) => {
         localStorage.setItem('token', res.token);
-        console.log(this.authService.getUserId());
+        this.authService.updateUserRole();
         this.router.navigate(['/myTrips']);
         return true;
       },
