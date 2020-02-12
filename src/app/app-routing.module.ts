@@ -6,6 +6,7 @@ import { MyTripsComponent } from './components/my-trips/my-trips.component';
 import { TripComponent } from './components/trip/trip.component';
 import { AuthGuard } from './commons/auth.guard';
 import { OtherTripsComponent } from './components/other-trips/other-trips.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 
 const routes: Routes = [
@@ -13,7 +14,9 @@ const routes: Routes = [
   {path:'user',canActivate: [AuthGuard],component:UserProfileComponent},
   {path: 'myTrips/:id', canActivate: [AuthGuard], component: TripComponent},
   {path:'myTrips',canActivate: [AuthGuard],component:MyTripsComponent},
-  {path:'myOtherTrips', canActivate: [AuthGuard], component:OtherTripsComponent}
+  {path:'myOtherTrips',canActivate: [AuthGuard],component:OtherTripsComponent},
+  {path:'logout', canActivate: [AuthGuard], component:LogoutComponent},
+
 ];
 
 @NgModule({

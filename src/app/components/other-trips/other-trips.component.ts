@@ -16,9 +16,7 @@ export class OtherTripsComponent implements OnInit {
    }
 
   ngOnInit() {
-    debugger;
     this.tripService.getOtherTrips().subscribe(otherTrips=>{
-      debugger;
       this.otherTrips=otherTrips});
   }
 

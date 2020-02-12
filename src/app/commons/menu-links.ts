@@ -38,6 +38,11 @@ export const registeredLinks: ILink[] = [
         name:'Other trips',
         class:'nav-item nav-link',
         routerLink: '/myOtherTrips'
+    }, 
+    {
+        name:'Logout',
+        class:'nav-item nav-link',
+        routerLink: '/logout'
     }
     // {
     //     name: 'Login',
